@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react';
-import { WeatherProvider } from './contexts/WeatherContext';
-import { useWeather } from './hooks/useWeather';
-import SearchBar from './components/SearchBar';
-import WeatherCard from './components/WeatherCard';
+import { WeatherProvider } from '@contexts/WeatherContext';
+import { useWeather } from '@hooks/useWeather';
+import SearchBar from '@components/SearchBar';
+import WeatherCard from '@components/WeatherCard';
 
 const WeatherApp: React.FC = () => {
   const { weather, forecast, loading, error, fetchWeather} = useWeather();

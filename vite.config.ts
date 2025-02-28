@@ -7,4 +7,13 @@ export default defineConfig({
   plugins: [react(),
     tailwindcss(),
   ],
+  resolve: {
+    alias: {
+      '@components': '/src/components',
+      '@contexts' : '/src/contexts',
+      '@hooks' : '/src/hooks',
+      '@types' : '/src/types',
+      '@utils': '/src/utils',
+    },
+  },
 })
