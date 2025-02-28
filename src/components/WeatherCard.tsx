@@ -44,6 +44,11 @@ const WeatherCard: React.FC<WeatherCardProps> = ({weather, forecast, loading, er
 
   // Extract only one forecast entry per day (typically noon or midday)
   const dailyForecasts = forecast?.list ? getDailyForecasts(forecast.list) : [];
+  const getTemperatureColor = (temp: number) => {
+    if (temp >= 30) return "bg-gradient-to-br from-red-500 to-amber-800";
+    if (temp >= 20) return "bg-gradient-to-br from-amber-0 to-amber-400";
+    if (temp >= 0) return "bg-gradient-to-br from-blue-0 to-blue-600";
+  };
 
   return (
     <div className="bg-gradient-to-tl from-blue-50 to-blue-700 rounded-xl shadow-lg p-6 max-w-4xl mx-auto">
@@ -58,8 +63,7 @@ const WeatherCard: React.FC<WeatherCardProps> = ({weather, forecast, loading, er
           
           <div className="grid grid-cols-2 md:grid-cols-5 gap-2">
             {dailyForecasts.map((item) => (
-              <div key={item.dt} className="bg-blue-50 rounded-lg p-3 text-center
-              bg-gradient-to-br from-white to-purple-300">
+              <div key={item.dt} className={"bg-blue-50 rounded-lg p-3 " + getTemperatureColor(item.main.temp)}>
                 <div className="font-medium text-sm">{formatDate(item.dt)}</div>
                 <img 
                   src={`https://openweathermap.org/img/wn/${item.weather[0].icon}.png`} 
