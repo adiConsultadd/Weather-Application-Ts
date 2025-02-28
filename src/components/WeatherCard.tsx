@@ -45,9 +45,10 @@ const WeatherCard: React.FC<WeatherCardProps> = ({weather, forecast, loading, er
   // Extract only one forecast entry per day (typically noon or midday)
   const dailyForecasts = forecast?.list ? getDailyForecasts(forecast.list) : [];
   const getTemperatureColor = (temp: number) => {
-    if (temp >= 30) return "bg-gradient-to-br from-red-500 to-amber-800";
+    if (temp >= 30) return "bg-gradient-to-br from-amber-500 to-amber-800";
     if (temp >= 20) return "bg-gradient-to-br from-amber-0 to-amber-400";
-    if (temp >= 0) return "bg-gradient-to-br from-blue-0 to-blue-600";
+    if (temp >= 10) return "bg-gradient-to-br from-purple-0 to-purple-500";
+    return "bg-gradient-to-br from-blue-0 to-blue-500"
   };
 
   return (
